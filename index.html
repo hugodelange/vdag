@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <title>Wil je mijn valentijn zijn 💖</title>
+
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #dbeafe, #eef6ff);
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 18px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      max-width: 380px;
+      width: 90%;
+      position: relative;
+    }
+
+    h1 {
+      margin-bottom: 15px;
+    }
+
+    .photo {
+      width: 100%;
+      max-height: 200px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 15px;
+      margin-bottom: 20px;
+      opacity: 0.85;
+    }
+
+    button {
+      font-size: 18px;
+      padding: 12px 22px;
+      margin: 8px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+      position: relative;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    .yes {
+      background-color: #ff4d6d;
+      color: white;
+    }
+
+    .no {
+      background-color: #ddd;
+      color: #333;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card" id="content">
+    <h1>Hoi jetty 💖</h1>
+
+    <img src="IMG_8659.JPG" alt="love you" class="photo" />
+    <img src="IMG_7703.JPG" alt="knapperd" class="photo" />
+    <img src="IMG_7761.JPG" alt="lekker ding" class="photo" />
+
+    <p>Wil je mijn valentijn zijn?</p>
+
+    <button class="yes" onclick="sayYes()">Ja <3</button>
+    <button class="no" id="noBtn">Nee :(</button>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+
+    // Dodge the cursor
+    noBtn.addEventListener("mouseenter", () => {
+      const card = document.querySelector(".card");
+      const cardRect = card.getBoundingClientRect();
+      const btnWidth = noBtn.offsetWidth;
+      const btnHeight = noBtn.offsetHeight;
+
+      const maxX = cardRect.width - btnWidth;
+      const maxY = cardRect.height - btnHeight;
+
+      const newX = Math.random() * maxX;
+      const newY = Math.random() * maxY;
+
+      noBtn.style.position = "absolute";
+      noBtn.style.left = newX + "px";
+      noBtn.style.top = newY + "px";
+    });
+
+    // Yes click
+    function sayYes() {
+      document.getElementById("content").innerHTML = `
+        <h1>🥰 Je bent huugs valentijn!</h1>
+        <p>Dat maakt mij gelukkig!</p>
+        <p>Tot volgende week in Itami💘</p>
+      `;
+    }
+
+    // No click
+    noBtn.addEventListener("click", () => {
+      document.getElementById("content").innerHTML = `
+        <h1>😢 waaaaaah</h1>
+        <p>Dit hoort niet te gebeuren klik maar op ja en wees mijn valentijn</p>
+      `;
+    });
+  </script>
+</body>
+</html>
